@@ -49,12 +49,14 @@ int main(int argc, char *argv[]) {
         err(1,"socket() failed\n");
 
     // read input data from STDIN
-    while((msg_size=read(STDIN_FILENO,buffer,BUFFER)) > 0) {
+    //while((msg_size=read(STDIN_FILENO,buffer,BUFFER)) > 0) {
+        msg_size = read(STDIN_FILENO, buffer, BUFFER);
         if (parse_parameters(parameters, buffer) != 0) {
             // error occured during parsing
-            continue;
+            //continue;
+            return 1;
         }
-    }
+    //}
 
     printf(
             "Filled parameters:\n"
@@ -96,7 +98,6 @@ int parse_parameters(struct prms *params, char *input) {
             return 1;
         }
         switch (token[1]) {
-            //TODO: DO NOT EXIT WITH ERROR, CONTINUE INSTEAD
             case 'R':
                 params->RW = 0;
                 break;
@@ -137,13 +138,14 @@ int parse_parameters(struct prms *params, char *input) {
             case 'c':
                 token = strtok(NULL, " ");
                 if (token != NULL) {
+                    char *mode = strtok(token, "\n");
                     //TODO: to lowercase for AsCii etc.
-                    if (strcmp(token, "ascii") == 0 || strcmp(token, "netascii") == 0) {
+                    if (strcmp(mode, "ascii") == 0 || strcmp(mode, "netascii") == 0) {
                         params->c = false;
-                    } else if (strcmp(token, "binary") == 0  || strcmp(token, "octet") == 0 ) {
+                    } else if (strcmp(mode, "binary") == 0  || strcmp(mode, "octet") == 0 ) {
                         params->c = true;
                     } else {
-                        printf("Invalid mode!");
+                        printf("Invalid mode: %s", token);
                         return 1;
                     }
                 }
@@ -156,6 +158,10 @@ int parse_parameters(struct prms *params, char *input) {
                 return 1;
         }
         token = strtok(NULL, " ");
+    }
+    if (params->RW == -1 || strcmp(params->d, "")) {
+        printf("Some required parameters are not inputted!");
+        return 1;
     }
     return 0;
 }
