@@ -6,7 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/Musterino/CLionProjects/untitled/main.c
+/home/musterino/CLionProjects/isa-project-tftp/utilities.c
+utilities.h
+/home/musterino/CLionProjects/isa-project-tftp/utilities.h
+
+/home/musterino/CLionProjects/isa-project-tftp/utilities.h
+string.h
+/home/musterino/CLionProjects/isa-project-tftp/string.h
+stdbool.h
+/home/musterino/CLionProjects/isa-project-tftp/stdbool.h
 stdio.h
--
+/home/musterino/CLionProjects/isa-project-tftp/stdio.h
+stdlib.h
+/home/musterino/CLionProjects/isa-project-tftp/stdlib.h
 

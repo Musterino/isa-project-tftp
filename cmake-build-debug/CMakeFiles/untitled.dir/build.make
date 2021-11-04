@@ -44,19 +44,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/Musterino/Downloads/CLion-2021.2.3/clion-2021.2.3/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/musterino/Development/CLion-2021.2.3/clion-2021.2.3/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/Musterino/Downloads/CLion-2021.2.3/clion-2021.2.3/bin/cmake/linux/bin/cmake -E rm -f
+RM = /home/musterino/Development/CLion-2021.2.3/clion-2021.2.3/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/Musterino/CLionProjects/untitled
+CMAKE_SOURCE_DIR = /home/musterino/CLionProjects/isa-project-tftp
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/Musterino/CLionProjects/untitled/cmake-build-debug
+CMAKE_BINARY_DIR = /home/musterino/CLionProjects/isa-project-tftp/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/untitled.dir/depend.make
@@ -68,28 +68,43 @@ include CMakeFiles/untitled.dir/flags.make
 
 CMakeFiles/untitled.dir/main.c.o: CMakeFiles/untitled.dir/flags.make
 CMakeFiles/untitled.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/Musterino/CLionProjects/untitled/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/untitled.dir/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/untitled.dir/main.c.o -c /home/Musterino/CLionProjects/untitled/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/musterino/CLionProjects/isa-project-tftp/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/untitled.dir/main.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/untitled.dir/main.c.o -c /home/musterino/CLionProjects/isa-project-tftp/main.c
 
 CMakeFiles/untitled.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/untitled.dir/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/Musterino/CLionProjects/untitled/main.c > CMakeFiles/untitled.dir/main.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/musterino/CLionProjects/isa-project-tftp/main.c > CMakeFiles/untitled.dir/main.c.i
 
 CMakeFiles/untitled.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/untitled.dir/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/Musterino/CLionProjects/untitled/main.c -o CMakeFiles/untitled.dir/main.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/musterino/CLionProjects/isa-project-tftp/main.c -o CMakeFiles/untitled.dir/main.c.s
+
+CMakeFiles/untitled.dir/utilities.c.o: CMakeFiles/untitled.dir/flags.make
+CMakeFiles/untitled.dir/utilities.c.o: ../utilities.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/musterino/CLionProjects/isa-project-tftp/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/untitled.dir/utilities.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/untitled.dir/utilities.c.o -c /home/musterino/CLionProjects/isa-project-tftp/utilities.c
+
+CMakeFiles/untitled.dir/utilities.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/untitled.dir/utilities.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/musterino/CLionProjects/isa-project-tftp/utilities.c > CMakeFiles/untitled.dir/utilities.c.i
+
+CMakeFiles/untitled.dir/utilities.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/untitled.dir/utilities.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/musterino/CLionProjects/isa-project-tftp/utilities.c -o CMakeFiles/untitled.dir/utilities.c.s
 
 # Object files for target untitled
 untitled_OBJECTS = \
-"CMakeFiles/untitled.dir/main.c.o"
+"CMakeFiles/untitled.dir/main.c.o" \
+"CMakeFiles/untitled.dir/utilities.c.o"
 
 # External object files for target untitled
 untitled_EXTERNAL_OBJECTS =
 
 untitled: CMakeFiles/untitled.dir/main.c.o
+untitled: CMakeFiles/untitled.dir/utilities.c.o
 untitled: CMakeFiles/untitled.dir/build.make
 untitled: CMakeFiles/untitled.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/Musterino/CLionProjects/untitled/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable untitled"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/musterino/CLionProjects/isa-project-tftp/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable untitled"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/untitled.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -101,6 +116,6 @@ CMakeFiles/untitled.dir/clean:
 .PHONY : CMakeFiles/untitled.dir/clean
 
 CMakeFiles/untitled.dir/depend:
-	cd /home/Musterino/CLionProjects/untitled/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/Musterino/CLionProjects/untitled /home/Musterino/CLionProjects/untitled /home/Musterino/CLionProjects/untitled/cmake-build-debug /home/Musterino/CLionProjects/untitled/cmake-build-debug /home/Musterino/CLionProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/musterino/CLionProjects/isa-project-tftp/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/musterino/CLionProjects/isa-project-tftp /home/musterino/CLionProjects/isa-project-tftp /home/musterino/CLionProjects/isa-project-tftp/cmake-build-debug /home/musterino/CLionProjects/isa-project-tftp/cmake-build-debug /home/musterino/CLionProjects/isa-project-tftp/cmake-build-debug/CMakeFiles/untitled.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/untitled.dir/depend
 

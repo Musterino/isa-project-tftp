@@ -8,7 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/Musterino/CLionProjects/untitled/main.c" "/home/Musterino/CLionProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir/main.c.o"
+  "/home/musterino/CLionProjects/isa-project-tftp/main.c" "/home/musterino/CLionProjects/isa-project-tftp/cmake-build-debug/CMakeFiles/untitled.dir/main.c.o"
+  "/home/musterino/CLionProjects/isa-project-tftp/utilities.c" "/home/musterino/CLionProjects/isa-project-tftp/cmake-build-debug/CMakeFiles/untitled.dir/utilities.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
