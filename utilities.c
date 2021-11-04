@@ -7,7 +7,7 @@
 int parse_parameters(struct prms *params, char *input) {
 
     char *ptr;
-    char *address_port = malloc(BUFFER);
+    char *address_port = NULL;
     int port;
 
     // set default values
@@ -84,6 +84,7 @@ int parse_parameters(struct prms *params, char *input) {
                 }
                 break;
             case 'a':
+                address_port = malloc(BUFFER);
                 token = strtok(NULL, " ");
                 strcpy(address_port, token);
                 break;
@@ -93,24 +94,27 @@ int parse_parameters(struct prms *params, char *input) {
         }
         token = strtok(NULL, " ");
     }
-    ptr = NULL;
-    address_port = strtok(address_port, ",");
-    if (address_port != NULL) {
-        //TODO: validate IPv4 and IPv6
-        strcpy(params->address, address_port);
-    }
-    address_port = strtok(NULL, ",");
-    if (address_port != NULL) {
-        port = strtol(address_port, &ptr, 10);
-        ptr[strcspn(ptr, "\n")] = '\0';
-        if (strcmp(ptr, "") != 0 || port < 1 || port > 65535) {
-            printf("Invalid port!\n");
+    if (address_port != NULL){
+        ptr = NULL;
+        address_port = strtok(address_port, ",");
+        if (address_port != NULL) {
+            //TODO: validate IPv4 and IPv6
+            strcpy(params->address, address_port);
+        }
+        address_port = strtok(NULL, ",");
+        if (address_port != NULL) {
+            port = strtol(address_port, &ptr, 10);
+            ptr[strcspn(ptr, "\n")] = '\0';
+            if (strcmp(ptr, "") != 0 || port < 1 || port > 65535) {
+                printf("Invalid port!\n");
+                return 1;
+            }
+            params->port = port;
+        } else {
+            printf("Bad address!\n");
             return 1;
         }
-        params->port = port;
-    } else {
-        printf("Bad address!\n");
-        return 1;
+        free(address_port);
     }
 
     if (params->RW == -1 || strcmp(params->d, "") == 0) {
