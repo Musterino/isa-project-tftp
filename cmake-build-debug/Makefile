@@ -153,6 +153,30 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/main.c.s
 .PHONY : main.c.s
 
+tftpclient.o: tftpclient.c.o
+.PHONY : tftpclient.o
+
+# target to build an object file
+tftpclient.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/tftpclient.c.o
+.PHONY : tftpclient.c.o
+
+tftpclient.i: tftpclient.c.i
+.PHONY : tftpclient.i
+
+# target to preprocess a source file
+tftpclient.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/tftpclient.c.i
+.PHONY : tftpclient.c.i
+
+tftpclient.s: tftpclient.c.s
+.PHONY : tftpclient.s
+
+# target to generate assembly for a file
+tftpclient.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/tftpclient.c.s
+.PHONY : tftpclient.c.s
+
 utilities.o: utilities.c.o
 .PHONY : utilities.o
 
@@ -189,6 +213,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... tftpclient.o"
+	@echo "... tftpclient.i"
+	@echo "... tftpclient.s"
 	@echo "... utilities.o"
 	@echo "... utilities.i"
 	@echo "... utilities.s"

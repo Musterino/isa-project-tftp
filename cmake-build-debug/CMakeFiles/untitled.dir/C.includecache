@@ -6,7 +6,29 @@
 
 #IncludeRegexTransform: 
 
-/home/musterino/CLionProjects/isa-project-tftp/utilities.c
+/home/musterino/CLionProjects/isa-project-tftp/main.c
+unistd.h
+-
+malloc.h
+-
+stdlib.h
+-
+utilities.h
+/home/musterino/CLionProjects/isa-project-tftp/utilities.h
+tftpclient.h
+/home/musterino/CLionProjects/isa-project-tftp/tftpclient.h
+
+/home/musterino/CLionProjects/isa-project-tftp/tftpclient.h
+sys/socket.h
+-
+arpa/inet.h
+-
+netinet/in.h
+-
+netdb.h
+-
+err.h
+-
 utilities.h
 /home/musterino/CLionProjects/isa-project-tftp/utilities.h
 

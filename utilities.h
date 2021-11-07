@@ -16,7 +16,7 @@ struct prms {
     int t;         // timeout (s)
     int s;         // blocksize
     bool m;         // multicast
-    bool c;         // mode - ascii - false | binary - true
+    char *c;         // mode - ascii - false | binary - true
     char *address;  // interface ip address
     int port;       // port
 };

@@ -79,6 +79,12 @@
 		<Unit filename="/home/musterino/CLionProjects/isa-project-tftp/main.c">
 			<Option target="untitled"/>
 		</Unit>
+		<Unit filename="/home/musterino/CLionProjects/isa-project-tftp/tftpclient.c">
+			<Option target="untitled"/>
+		</Unit>
+		<Unit filename="/home/musterino/CLionProjects/isa-project-tftp/tftpclient.h">
+			<Option target="untitled"/>
+		</Unit>
 		<Unit filename="/home/musterino/CLionProjects/isa-project-tftp/utilities.c">
 			<Option target="untitled"/>
 		</Unit>

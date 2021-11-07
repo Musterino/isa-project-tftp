@@ -3,6 +3,11 @@
 
 CMakeFiles/untitled.dir/main.c.o: \
  ../main.c \
+ ../tftpclient.h \
+ ../utilities.h
+CMakeFiles/untitled.dir/tftpclient.c.o: \
+ ../tftpclient.c \
+ ../tftpclient.h \
  ../utilities.h
 CMakeFiles/untitled.dir/utilities.c.o: \
  ../utilities.c \

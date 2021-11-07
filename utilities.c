@@ -14,7 +14,7 @@ int parse_parameters(struct prms *params, char *input) {
     params->RW = params->t = -1;
     strcpy(params->d, "");
     params->s = 512;
-    params->c = true;
+    params->c = "octet";
     params->m = false;
     strcpy(params->address, "127.0.0.1");
     params->port = 69;
@@ -25,7 +25,7 @@ int parse_parameters(struct prms *params, char *input) {
     // get parameters
     while (token != NULL) {
         if (token[0] != '-') {
-            printf("Invalid parameters!");
+            fprintf(stderr, "Invalid parameters!");
             return 1;
         }
         switch (token[1]) {
@@ -47,7 +47,7 @@ int parse_parameters(struct prms *params, char *input) {
                 if (token != NULL) {
                     params->t = strtol(token, &ptr, 10);
                     if (strcmp(ptr, "") != 0) {
-                        printf("Invalid timeout time!");
+                        fprintf(stderr, "Invalid timeout time!");
                         return 1;
                     }
                 }
@@ -59,7 +59,7 @@ int parse_parameters(struct prms *params, char *input) {
                     long size = strtol(token, &ptr, 10);
                     //TODO: size of packet check if wrong
                     /*if (strcmp(ptr, "") != 0 || size % 8 != 0) {
-                        printf("Invalid block max size!");
+                        fprintf(stderr, "Invalid block max size!");
                         return 1;
                     }*/
                     params->s = size;
@@ -72,13 +72,10 @@ int parse_parameters(struct prms *params, char *input) {
                 token = strtok(NULL, " ");
                 if (token != NULL) {
                     token[strcspn(token, "\n")] = '\0';
+                    strcpy(params->d, token);
                     //TODO: to lowercase for AsCii etc.
-                    if (strcmp(token, "ascii") == 0 || strcmp(token, "netascii") == 0) {
-                        params->c = false;
-                    } else if (strcmp(token, "binary") == 0  || strcmp(token, "octet") == 0 ) {
-                        params->c = true;
-                    } else {
-                        printf("Invalid mode: %s", token);
+                    if (strcmp(params->c, "ascii") != 0 || strcmp(params->c, "netascii") != 0 || strcmp(params->c, "binary") != 0  || strcmp(params->c, "octet") != 0 ) {
+                        fprintf(stderr, "Invalid mode: %s", token);
                         return 1;
                     }
                 }
@@ -89,7 +86,7 @@ int parse_parameters(struct prms *params, char *input) {
                 strcpy(address_port, token);
                 break;
             default:
-                printf("Invalid parameter!");
+                fprintf(stderr, "Invalid parameter!");
                 return 1;
         }
         token = strtok(NULL, " ");
@@ -106,19 +103,19 @@ int parse_parameters(struct prms *params, char *input) {
             port = strtol(address_port, &ptr, 10);
             ptr[strcspn(ptr, "\n")] = '\0';
             if (strcmp(ptr, "") != 0 || port < 1 || port > 65535) {
-                printf("Invalid port!\n");
+                fprintf(stderr, "Invalid port!\n");
                 return 1;
             }
             params->port = port;
         } else {
-            printf("Bad address!\n");
+            fprintf(stderr, "Bad address!\n");
             return 1;
         }
         free(address_port);
     }
 
     if (params->RW == -1 || strcmp(params->d, "") == 0) {
-        printf("Some required parameters are not inputted!");
+        fprintf(stderr, "Some required parameters are not inputted!");
         return 1;
     }
     return 0;
