@@ -12,11 +12,12 @@
 
 struct prms {
     int RW;         // read - 0 | write - 1
-    char *d; // filepath
-    int t;         // timeout (s)
-    int s;         // blocksize
+    char *d;        // filepath
+    int t;          // timeout (s)
+    int s;          // blocksize
     bool m;         // multicast
-    char *c;         // mode - ascii - false | binary - true
+    char *c;        // mode string
+    bool is_binary; // mode: ascii - false | binary - true
     char *address;  // interface ip address
     int port;       // port
 };

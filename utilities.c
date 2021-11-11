@@ -74,7 +74,11 @@ int parse_parameters(struct prms *params, char *input) {
                     token[strcspn(token, "\n")] = '\0';
                     strcpy(params->d, token);
                     //TODO: to lowercase for AsCii etc.
-                    if (strcmp(params->c, "ascii") != 0 || strcmp(params->c, "netascii") != 0 || strcmp(params->c, "binary") != 0  || strcmp(params->c, "octet") != 0 ) {
+                    if (strcmp(params->c, "ascii") == 0 || strcmp(params->c, "netascii") == 0) {
+                        params->is_binary = false;
+                    } else if (strcmp(params->c, "binary") == 0  || strcmp(params->c, "octet") == 0 ) {
+                        params->is_binary = true;
+                    } else {
                         fprintf(stderr, "Invalid mode: %s", token);
                         return 1;
                     }
