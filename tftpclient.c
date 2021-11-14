@@ -42,6 +42,7 @@ int start_tftp_transfer(struct prms *parameters) {
 
     printf("Creating TFTP header...\n");
 
+
     // create tftp header
 
     // set opcode
