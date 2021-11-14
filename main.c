@@ -5,7 +5,7 @@
 #include "utilities.h"
 #include "tftpclient.h"
 
-int main(int argc, char *argv[]) {
+int main() {
     char buffer[BUFFER];
 
     // alocate memory for parameters from stdin
@@ -26,11 +26,11 @@ int main(int argc, char *argv[]) {
             return 1;
         }
 
-        //start_tftp_transfer(parameters);
+        start_tftp_transfer(parameters);
 
     //}
 
-    printf(
+    /*printf(
             "Filled parameters:\n"
             "Read|Write:    %d\n"
             "File:          %s\n"
@@ -41,6 +41,9 @@ int main(int argc, char *argv[]) {
             "Address:       %s\n"
             "Port:          %d\n",
            parameters->RW, parameters->d, parameters->t, parameters->s, parameters->m, parameters->c, parameters->address, parameters->port);
+    */
+
+
 
     // free alocated memory
     free(parameters->address);

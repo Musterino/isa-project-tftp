@@ -39,4 +39,5 @@
 /cmake-build-debug/CMakeFiles/TargetDirectories.txt
 /cmake-build-debug/Testing/Temporary/
 /cmake-build-debug/Testing/Temporary/LastTest.log
-/.gitignore
+*.o
+*.ps

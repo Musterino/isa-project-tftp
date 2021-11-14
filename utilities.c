@@ -10,6 +10,8 @@ int parse_parameters(struct prms *params, char *input) {
     char *address_port = NULL;
     int port;
 
+    printf("\nStarted parsing parameters...\n");
+
     // set default values
     params->RW = params->t = -1;
     strcpy(params->d, "");
@@ -28,70 +30,78 @@ int parse_parameters(struct prms *params, char *input) {
             fprintf(stderr, "Invalid parameters!");
             return 1;
         }
-        switch (token[1]) {
-            case 'R':
-                params->RW = 0;
-                break;
-            case 'W':
-                params->RW = 1;
-                break;
-            case 'd':
-                token = strtok(NULL, " ");
-                // remove possible next line
-                token[strcspn(token, "\n")] = '\0';
-                strcpy(params->d, token);
-                break;
-            case 't':
-                ptr = NULL;
-                token = strtok(NULL, " ");
-                if (token != NULL) {
-                    params->t = strtol(token, &ptr, 10);
-                    if (strcmp(ptr, "") != 0) {
-                        fprintf(stderr, "Invalid timeout time!");
-                        return 1;
-                    }
-                }
-                break;
-            case 's':
-                ptr = NULL;
-                token = strtok(NULL, " ");
-                if (token != NULL) {
-                    long size = strtol(token, &ptr, 10);
-                    //TODO: size of packet check if wrong
-                    /*if (strcmp(ptr, "") != 0 || size % 8 != 0) {
-                        fprintf(stderr, "Invalid block max size!");
-                        return 1;
-                    }*/
-                    params->s = size;
-                }
-                break;
-            case 'm':
-                params->m = true;
-                break;
-            case 'c':
-                token = strtok(NULL, " ");
-                if (token != NULL) {
+        token[strcspn(token, "\n")] = '\0';
+        if (strlen(token) == 2) {
+            switch (token[1]) {
+                case 'R':
+                    params->RW = 0;
+                    break;
+                case 'W':
+                    params->RW = 1;
+                    break;
+                case 'd':
+                    token = strtok(NULL, " ");
+                    // remove possible next line
                     token[strcspn(token, "\n")] = '\0';
                     strcpy(params->d, token);
-                    //TODO: to lowercase for AsCii etc.
-                    if (strcmp(params->c, "ascii") == 0 || strcmp(params->c, "netascii") == 0) {
-                        params->is_binary = false;
-                    } else if (strcmp(params->c, "binary") == 0  || strcmp(params->c, "octet") == 0 ) {
-                        params->is_binary = true;
-                    } else {
-                        fprintf(stderr, "Invalid mode: %s", token);
-                        return 1;
+                    break;
+                case 't':
+                    ptr = NULL;
+                    token = strtok(NULL, " ");
+                    if (token != NULL) {
+                        token[strcspn(token, "\n")] = '\0';
+                        params->t = strtol(token, &ptr, 10);
+                        if (strcmp(ptr, "") != 0) {
+                            fprintf(stderr, "Invalid timeout time!");
+                            return 1;
+                        }
                     }
-                }
-                break;
-            case 'a':
-                address_port = malloc(BUFFER);
-                token = strtok(NULL, " ");
-                strcpy(address_port, token);
-                break;
-            default:
-                fprintf(stderr, "Invalid parameter!");
-                return 1;
+                    break;
+                case 's':
+                    ptr = NULL;
+                    token = strtok(NULL, " ");
+                    if (token != NULL) {
+                        token[strcspn(token, "\n")] = '\0';
+                        long size = strtol(token, &ptr, 10);
+                        //TODO: size of packet check if wrong
+                        if (strcmp(ptr, "") != 0 || size % 8 != 0) {
+                            fprintf(stderr, "Invalid block max size!");
+                            return 1;
+                        }
+                        params->s = size;
+                    }
+                    break;
+                case 'm':
+                    params->m = true;
+                    break;
+                case 'c':
+                    token = strtok(NULL, " ");
+                    if (token != NULL) {
+                        token[strcspn(token, "\n")] = '\0';
+                        strcpy(params->d, token);
+                        //TODO: to lowercase for AsCii etc.
+                        if (strcmp(params->c, "ascii") == 0 || strcmp(params->c, "netascii") == 0) {
+                            params->is_binary = false;
+                        } else if (strcmp(params->c, "binary") == 0 || strcmp(params->c, "octet") == 0) {
+                            params->is_binary = true;
+                        } else {
+                            fprintf(stderr, "Invalid mode: %s", token);
+                            return 1;
+                        }
+                    }
+                    break;
+                case 'a':
+                    address_port = malloc(BUFFER);
+                    token = strtok(NULL, " ");
+                    strcpy(address_port, token);
+                    break;
+                default:
+                    fprintf(stderr, "Invalid parameter!");
+                    return 1;
+            }
+        } else {
+            fprintf(stderr, "Invalid parameter: %s\n", token);
+            return 1;
         }
         token = strtok(NULL, " ");
     }
@@ -122,5 +132,7 @@ int parse_parameters(struct prms *params, char *input) {
         fprintf(stderr, "Some required parameters are not inputted!");
         return 1;
     }
+
+    printf("Parameters parsed!\n");
     return 0;
 }

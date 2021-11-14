@@ -1,10 +1,15 @@
 //
 // Created by musterino on 11/2/21.
 //
-#include "string.h"
-#include "stdbool.h"
-#include "stdio.h"
-#include "stdlib.h"
+#include <string.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include <netinet/in.h>
+#include <netdb.h>
+#include <err.h>
 
 #ifndef UNTITLED_UTILITIES_H
 #define UNTITLED_UTILITIES_H
