@@ -1,4 +1,0 @@
-/home/musterino/Development/CLion-2021.2.3/clion-2021.2.3/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /home/musterino/CLionProjects/isa-project-tftp
--- Configuring done
--- Generating done
--- Build files have been written to: /home/musterino/CLionProjects/isa-project-tftp/cmake-build-debug
