@@ -10,6 +10,7 @@
 #include <netinet/in.h>
 #include <netdb.h>
 #include <err.h>
+#include <time.h>
 
 #ifndef UNTITLED_UTILITIES_H
 #define UNTITLED_UTILITIES_H
@@ -25,9 +26,11 @@ struct prms {
     bool is_binary; // mode: ascii - false | binary - true
     char *address;  // interface ip address
     int port;       // port
+    int tsize;      // transfer size
 };
 
 int parse_parameters(struct prms *params, char *input);
+void timestamp();
 
 
 #endif //UNTITLED_UTILITIES_H

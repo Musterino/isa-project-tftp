@@ -7,42 +7,45 @@
 
 int main() {
     char buffer[BUFFER];
+    int parse_ret;
 
     // alocate memory for parameters from stdin
     struct prms *parameters = malloc(sizeof(struct prms));
     parameters->address = malloc(BUFFER);
     parameters->d = malloc(BUFFER);
     parameters->c = malloc(BUFFER);
-    /*if (parameters || !parameters->d || !parameters->address || parameters->c) {
+    if (parameters == NULL|| parameters->d == NULL || parameters->address == NULL || parameters->c == NULL) {
         err(1, "Unable to alocate memory!");
-    }*/
-
+    }
+    printf("Welcome to TFTPv2 client. To send a request enter specified parameters.\n"
+           "Note that every parameter must be inputted only once!\n"
+           "Parameters: \n"
+           "    -R or -W            -   read or write request,  required\n"
+           "    -d <path_to_file>   -   specify path to file,   required\n"
+           "    -t <secs>           -   timeout in seconds,     optional\n"
+           "    -s <num_of_bytes>   -   max block size in \n"
+           "                            multiples of octets,    optional\n"
+           "    -c <mode>           -   mode of transfer,       optional\n"
+           "    -a <address,port>   -   IP address and port\n"
+           "                            of TFTP server,         optional\n"
+           "To exit the client type q and enter!\n");
     // read input data from STDIN
-    //while(read(STDIN_FILENO,buffer,BUFFER) > 0) {
-        read(STDIN_FILENO, buffer, BUFFER);
-        if (parse_parameters(parameters, buffer) != 0) {
+    while(1) {
+
+        printf("> ");
+        fgets(buffer, sizeof(buffer), stdin);
+        parse_ret = parse_parameters(parameters, buffer);
+        if (parse_ret != 0) {
+            if (parse_ret == 2) {
+                break;
+            }
             // error occured during parsing
-            //continue;
-            return 1;
+            continue;
         }
 
         start_tftp_transfer(parameters);
 
-    //}
-
-    /*printf(
-            "Filled parameters:\n"
-            "Read|Write:    %d\n"
-            "File:          %s\n"
-            "Timeout:       %d\n"
-            "Size:          %d\n"
-            "Multicast      %d\n"
-            "Mode:          %s\n"
-            "Address:       %s\n"
-            "Port:          %d\n",
-           parameters->RW, parameters->d, parameters->t, parameters->s, parameters->m, parameters->c, parameters->address, parameters->port);
-    */
-
+    }
 
 
     // free alocated memory
