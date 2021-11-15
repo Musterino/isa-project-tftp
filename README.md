@@ -6,12 +6,11 @@ Jsou zde implementovane rozsireni timeout option, transfer size option a block s
 
 Parametry:
 	-R nebo -W             	-   read nebo write pozadavek, povinny
-        -d <cesta_k_souboru> 	-   cesta k souboru k prenosu, povinny
-        -t <sekundy>            -   timeout rozsireni, volitelny
-        -s <pocet_bytu>    	-   maximalni velikost bloku v nasobcich oktetu, volitelny
-        -c <mod>            	-   mod prenosu, volitelny
-        -a <adresa,port>    	-   IP adresa a port
-                                    TFTP serveru,         volitelny
+	-d <cesta_k_souboru> 	-   cesta k souboru k prenosu, povinny
+	-t <sekundy>            -   timeout rozsireni, volitelny
+	-s <pocet_bytu>    	-   maximalni velikost bloku v nasobcich oktetu, volitelny
+	-c <mod>            	-   mod prenosu, volitelny
+	-a <adresa,port>    	-   IP adresa a port TFTP serveru, volitelny
 
 
 ### Neni implementovano:
